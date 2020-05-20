@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title></title>
+
+	<meta name="description" content="Opis w Google" />
+	<meta name="keywords" content="słowa, kluczowe, wypisane, po, porzecinku" />
+
+</head>
+
+<body>
+	<form action="mailto:melmanwelcome@onet.eu?subject=Aniketa" method="POST"ecnctype="text/plain" accept-charset="utf-8" > <!--W tym miejscu okteślamy co można zrobić z formularzem i temat oraz metodę (parametr "action") atrybut "ecnctype"-spopsób kodowania acept-charset -- dopuszczalne znaki// mailto-sposób w jaki dane będą przesyłane(np. mail)-->
+
+	<div class="input_field">
+		Imię: <input type="text" name="imię" value="Imię"/><br/> <!--określamy typ danyh (text), nazwę, która będzie przyporządkowana i wyświetlana dla danego formularza (name) oraz  wartosć domuślną (tzw.placeholder) -->
+		Nazwisko: <input type="text" name="nazwisko" value="Nazwisko" size="25"/><br/> <!--atrybut size do ustalenia długości inputu-->
+		Adres: <input type="text" name="nazwisko" value="Adres" size="25" maxlength="6"/><br/> <!--Max lenght - maksymalna długość!-->
+		Hasło: <input type="password" value="Set your's password"/> <br/> <!--typ password pozwala na wykropkowane pola w inpucie!-->
+		<input type="submit" value="Send"/> <!--to nam towrzy button do wysłania powiązany z popzednimi formularzami! atrybut "Send" określa napis na buttonie-->
+	</div>
+	</form>
+
+	<br/>
+	Liczba: <input type="number" value="Set your's number"/> <br/>  <!--poza tagami <form> input nie będzie się wysyłał!! spróbuj kliknąć "send" tutaj- nie działa!-->
+	<input type="submit" value="Send"/>
+	<br/>
+	<br/>
+
+	<!--Input Field--Input-->
+	<form action="mailto:melmanwelcome@onet.eu?subject=Aniketa" method="POST"ecnctype="text/plain" accept-charset="utf-8" > 
+		<div class="input_field">
+			Rasa: <input type="text" name="Rasa" value="Rasa" disabled/><br/><!--atrybut disabled - nie można kopiować ani edytować -->
+			Imię: <input type="text" name="nazwisko" value="Imię" readonly/> <br/> <!--atrybut readonly - nie można kopiować, można edytować-->
+			Płeć: <input type="text" name="nazwisko" value="Płeć" size="25" maxlength="6"/><br/> <!--Max lenght - maksymalna długość!-->
+			Hasło: <input type="password" value="Set your's password"/> <br/> <!--typ password pozwala na wykropkowane pola w inpucie!-->
+			<input type="submit" value="Send"/> <!--to nam towrzy button do wysłania powiązany z popzednimi formularzami! atrybut "Send" określa napis na buttonie-->
+		</div>
+		</form>
+		<br/>
+		<br/>
+	
+		<!--CheckBox-->
+	<form action="mailto:melmanwelcome@onet.eu?subject=Aniketa" method="POST"ecnctype="text/plain" accept-charset="utf-8" > 
+		<div class="input_field_CHECBOX">
+			<fieldset><!--Obramowanie dla całego formularza-->
+				<legend>Jakie jest Twoje hobby?</legend> <!--nazwa dla całego formularza-->
+				<ul style="list-style-type: none;">
+					<li><input type="checkbox" name="hobby" value="Pływanie" id="1"/> <label for="1">Pływanie</label></li> <!--id pozwala nadac do konkretnego labela konkretny item. -->
+					<li><input type="checkbox" name="hobby" value="Strzelanie" id="2"/> <label for="2">Strzelanie</label></li> <!--lABEL pozawala żeby ticketowac (odznaczać) po kliknięu na cały teskt a nie tylko wticketa (kwadracik) -->
+					<li><input type="checkbox" name="hobby" value="Modlitwa" id="3"/> Modlitwa</li> <!--name -ŻEBY W PRZESŁANYM FORMULARZY BYŁO INFO CZEGO DOTYCZY FORMULARZ I DOPWOIEDŹ / CALUE (ŻEBY BYŁO NFO, CO ZOSTAŁO ODZNACZONE W PRZESŁANY FORMULARZU-->
+					<br/>
+					<input type="submit" value="Send"/>
+				</ul>
+		</fieldset>
+		</div>
+		</form>
+		<br/>
+		<br/>
+
+	<!--RADIOBOX-->
+	<form action="mailto:melmanwelcome@onet.eu?subject=Aniketa" method="POST"ecnctype="text/plain" accept-charset="utf-8" >
+	<fieldset>
+		<legend> W którym przedziale wiekowym jesteś? </legend>
+		<ul style="list-style-type: none;">
+			<li><input type="radio" id="4"name="wiek" value="1-18"/><label for="4">1-18</label></li> <!--wartość name ma być taka same dla wszystkich inputów z listy, aby można było zaznaczyć tylko jeden!-->
+			<li><input type="radio" id="5" name="wiek" value="5-34"/><label for="5">18-34</label></li> <!--atrybut value konieczny jak wszędzie - to on określa co zostanie przesłane w wyniku odpowiedzi izaznaczenia radio-buttona-->
+			<li><input type="radio" id="6" name="wiek" value="34+"/><label for="6">34+</label></li>
+		</ul>
+		<legend>Dodatkowe uwagi</legend>
+		<!--textarea-->
+		<textarea cols="40" rows="10"></textarea><br/><br/>
+		<input type="submit" value="Send"/>
+	</fieldset>
+</form>
+<br/><br/>
+
+<!--Select-box-->
+<fieldset>
+	<legend> Wybierz kolor </legend>
+	<select name="Kolory">
+		<option value="Żółty">Żółty</option>
+		<option value="Zielony">Zielony</option>
+		<option value="Czerwony">Czerwony</option>
+	</select>
+	<br/><br/>
+<input type="submit" value="Send"/>
+</fieldset>
+<br/><br/>
+
+<!--Select-box-- combobox (opcja multiple)-->
+<form>
+	<fieldset>
+		<legend>Wybierz kolory</legend> <!--WYBIERZ KOLORY ZAWSZE MA BYĆ PRZED TYPEM INPUTU-->
+			<select name="Kolory" multiple="multiple"> <!--jak wszędzie pamietamy o value- żebyśmy wiedizeli co przesyłamy!-->
+				<option value="Żółty">Żółty</option>
+				<option value="Zielony">Zielony</option>
+				<option value="Czerwony">Czerwony</option>
+			</select>
+<br/><br/>
+				<input type="submit" value="Send"/>
+	</fieldset>
+<br/><br/>
+</form>
+
+<!--Typ do przesyłania plików-->
+<fieldset>
+	<input type="file"/>
+</fieldset>
+
+<!--input ukryty wysyłający z odpowiedziami formularza autmatycznie bez wiedzy uswra) inne metadane np. datę wstawianą przez skrypt-->
+<fieldset>
+	<input type="hidden" nme="data" value="Aktualna data ze skryptu" >
+</fieldset>
+<br/><br/>
+
+<!--buttpn tez może być inputem!-->
+<form action="mailto:melmanwelcome@onet.eu?subject=Aniketa" method="POST"ecnctype="text/plain" accept-charset="utf-8">
+	<button type="submit">Wyślij</button>
+</form>
+
+</body>
+</html>
