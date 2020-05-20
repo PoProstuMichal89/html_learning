@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+	<meta charset="utf-8">
+	<title>Katalog samochodowy</title>
+	<meta name="description" content="Stwórz wymarzony model swojego samochodu!">
+	<meta name="keywords" content="samochód, katalog, salon, nowe auto">
+	<meta name="author" content="Jan Nowak">
+	
+	<meta http-equiv="X-Ua-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" href="main.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
+	
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+	
+</head>
+
+<body>
+
+	<header>
+	
+		<h1>Wybierz konfigurację samochodu</h1>
+
+	</header>
+	
+	<main>
+	
+		<article>
+		
+			<fieldset>
+				<legend>Rodzaj nadwozia</legend>
+				<form action=""method="post" enctype="application/x-www-form-urlencoded"> <!--atrybut action - który skrypt zajmuje się przetworzeniem danych z formularza. Śieżka do skryptu php. Enctype spsoób kodowania danych. application/x-www...-wartość domyślna-->
+					<div><label><input type="radio" name="nadwozie" value="Hatchback"> Hatchback</label></div>	<!--W formularzach każda kontrolka formularza powinna posiadać "gorącą" aktywującą element etykietę (ustanowioną tagiem label)-->
+					<div><label><input type="radio" name="nadwozie" value="Kabrio"> Kabriolet</label></div>	<!--<input> może być wewnątrz tagów <label>-->
+					<div><input type="radio" id="nadwozie" name="nadwozie" value="Kombi" checked> <label for="nadwozie">Kombi</label></div> <!--albo trzeba nadać id dla inputa i przypisać je potem do opisu. Checked-ten trybut domyślnie odznacza pole - po odświeżeniu jest dalej zaznaczone -->
+			<!--<div> to element blokowy, a więc ustawia się jeden pod drugim. Jak wsadzimy w <div> inputy to ustawią się one jeden pod drugim-->
+			<!--atrybut name ustawiamy by uchywcić wartość danej kontrolki fromularza w PHP (name służy do odebrania wartości w PHP, odebrania po stronie serwra). Atrybut id jest po to, aby działały etykiety -->
+			<!--Atrybut "Value" jest konieczny, bo PHP nie pobiera z frontendu nazwy inputu - (np. "Hatchback, Kabrio, dlatego trzeba mu nadać identyfikator) -->
+		</form>
+		</fieldset>
+
+		<label for="silnik">Rodzaj silnika</label>
+		<select id="silnik" name="silnik">
+			<option value="w">wysokorężynowy</option>
+			<option value="b" selected>benzynowy</option> <!--Atrybut selected ustawia domyślnie wybór, który będzie widoczny np. po odświeżwniu strony-->
+			<option value="e">elektryczny</option>
+			<option value="h">hybrydowy</option>
+		</select>
+			
+			
+		</article>
+		
+	</main>
+
+</body>
+</html>
