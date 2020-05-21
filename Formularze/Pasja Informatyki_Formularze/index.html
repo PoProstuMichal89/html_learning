@@ -110,6 +110,89 @@
 					</div>
 
 					<div class="row">
+						<label>Adres e-mail<input type="email" name="adres" multiple placeholder="adres@domena" required></label> <!--Pole tyu e-mail - dopuszcza tylko poprawnie zapisany adres e-mail-->
+						<!--Pole typu e-mail nie wymusza uzupełnienia, czyli pusta(!) wartość nie zapobiega submitowi (wysyłaniu) formulrza-->
+						<!--Jeżeli coś wpiszemy w pole, to musi t być poprawny składniowo adres poczty elektronicznej (sprawdza wyrażenie regularne a nie autentyczność samego adresu). Inaczej nas nie puści i zwaliduje składnię adresu -->
+						<!--Aby wymusić uzupełnienie pola (wartość niepustą pola) należy użuć dodatkowego atrybutu required-->
+						<!--Przeglądarkowa prewalidacja formularza nie może nigdy stanowić substytutu właściwej sanityzacji wejścia po stronie serewra. Innymi słowy - nie ufamy walidacji w formularzu (fornt-endowym ograniczeniom w interfejsie po stronie klienta). To musi być sprawdzane po stronie serwera! -->
+						<!--dzięki atrybutowi multiple można w jedno pole (po przecinku) wpisać kilka adresów e-mail-->
+						<!--W przeglądarkach, które nie obsługują pola typu e-mail (IE<10) nastąpi tzw. fallback (cofnięcie się, downgrade) do zwykłego inputa typu text (pozbawionego prewalidacji adresu)-->
+					</div>
+
+					<div class="row">
+						<label>Numer telefonu<input type="tel" name="tel" required></label>
+						<!--nr telefonu (typ "tel") nie jest standardowo walidowany bo nie ma określonych standardów ogólnonarodowych, więc co nie wpiszemy to prejdzie -->
+						<!--ale na typ "tel" wymusza np. po tapnięcoiu na smartfonie np. wyświetlenie klawiatury numerycznej (zamiast alfabetycznej)-->
+					</div>
+
+					<div class="row">
+						<label>Wybier kolor lakieru <input type="color"> </label> <!--formatka do wybor koloru-->
+					</div>
+
+					<div class="row">
+						<label>Data dostawy<input type="date" name="dzien" min="2019-03-01" max="2019-03-31"></label>
+						<!--ustawienie typu data spowoduje dodanie widżetu z kalendarzem!-->
+						<!--w Safari i IE nie ma możiwości wyświetlenia widżetu z kalendarzem! Trzeba wpsiać ręcznie! Pole typu date nie jest wspierane w przeglądarkach IE oraz Safari-->
+						<!--Inny zapis daty po stronie klienta (wygodna maska) i inny po stronie serwera (po odbiorze przez serwer inne formatowanie daty) DWIE WARSTWY ZAPISU DATY - dla programisty i dla użytkownika końcowego-->
+						<!--atrybut min i max - określa przedział czasowy (trzeba tam podać daty) widżet i prewalidacja zablokuje dodanie dat z innego przedziału-->
+					</div>
+
+					<div class="row">
+						<label>Czas dostawy<input type="time" name="czas" step="60" min="9:00" max="17:00"></label>
+						<!--Główna konfiguracja formatu czasu - 24 godziny. Możliwe też inne -->
+						<!--AM (łac. ante meridiem) - przed południem: od północy do godziny 12:00-->
+						<!--PM (łac. post meridiem) - po południu: od godziny 12:00 do północy-->
+						<!--atrybut step określa na ile można zmienić ilość minut/sekund w wyborze czasu.Step="1" znaczy że możemy ustawiać czas z dokładnością co do jednej sekundy-->
+						<!--W  PHP i tak odbierzemy wartość 24 godzinną, z sekundami, jeśli tk został ustawiony atrybut step-->
+						<!--W polu numerycznym nie pozwala nam na wpsianie liter, tylko cyfry -->
+						<!--IE i Safari zrobią fallback (downgrade) do zwykłego pola tekstowego-->
+						<!--Jak wszędzie - prewalidacja po stronie klienta nie wystarczy! Trzeba mieć walidację po stronie serwera, czy dobre dane zostały przesłane!-->
+						<!--Atrybuty min i max działają tak samo jak w innych wypadkach!-->
+					</div>
+					
+					<div class="row">
+						<div><label for="komentarz">Uwagi do zamówienia</label></div>
+						<textarea name="komentarz" id="komentarz" rows="4" cols="80" minlength="10" maxlength="15">
+						</textarea>
+						<!--text area to jakiś fragment, dlatego znacznik podwójny-->
+						<!--atrybuty: rows-ile rzędów (wysokość) cols-ile kolumn(szerokość)-->
+						<!--min i maxlenght - minimalna i maksymalna długość znaków. Jeśłi puste pole to przejdzie. Jeśłi cokolwiek wpiszemy to musi mieć minimalną liczbę znaków-->
+						<!--Często textarea wspierane przez edytory z JavaScript - edytory WYSIWYG (what you see is what you got). Są tam różne opcje formatowania tekstu, np. CKEditor, TinyMCE, Summernote, Froala Editor.-->
+					</div>
+
+					<div class="row">
+						<label>Prześlij zdjecie poprzedniego samochodu!</label>
+						<input type="file" name="obraz" accept="image/x-png, image/gif, image/jpeg" multiple>
+						<!--Stylizacja na frontendzie tego pliku - trunda rzecz. Na back-end też trudno!-->
+						<!--Przesłanie plików na serwer jest tez ryzykowne, wiec specjalne skrypty i tablice PHP.Trzeba to porządnie sprawdzić co to za plik i co zawiera (sanityzować wejsćie)-->
+						<!--Atrybut który pozwala na wybranie odpowiednich formatów i ułatwia wyszukwianie na dysku (nie pokazuje innych rozszerzn.) Rodzaj maski (filtra)-->
+						<!--Użytkownik wciąż może wybierac sobie "wszystkie typy plików" i dodać np. txt. Atrybut accept nie blokuje tej możliwosći (tylko maskuje inne pliki podczas wyboru)-->
+						<!--multiple- Dodawanie wielu plików-->
+						<!--UWAGA! enctype - ważny atrybut przy form, zwróc uwagę!!-->
+					</div>
+
+					<div class="row">
+						<label>Status zamówienia</label> 
+							<progress max="100" value="50" id="realizacja"></progress>
+							<!--Tak zwany progress bar do śledzenia postępów-->
+							<!--Wartosci w PHP nie odbieramy, gdyż ten elemnt słuzy nam developerom do przekazania wartości userowi (nie odwrotnie)-->
+					</div>
+
+					<div class="row">
+						<label>Stopień zatankowania samochodu</label>
+						<meter min="0" max="100" value="40" low="30" high="75" optimum="85" title="procent"></meter>
+						<!--Nie ma atrybutu name, bo niepotrzeba, nic nie bezie odbierane po stronie PHP, to tylko info dla usera!-->
+						<!--Atrybuty low, high, optiumum -- pomocne przy określaniu stanu progresu-->
+						<!--Nie jest obsługiwana przez IE-->
+					</div>
+
+					<div class="row">
+						<label>Twoja strona www</label><input type="url" name="witryna">
+						<!--Prewalidacja jedynie wyrażenia regularnego, nie autentyczności-->
+						<!--Skrypt JS może dokleić http:// bo jest to wymagane!-->
+					</div>
+
+					<div class="row">
 						<input type="submit" value="Zamawiam!"> <!--input typu submit podsumowuje i wysyła wszystko co było w formularzu-->
 					</div>
 
@@ -128,6 +211,9 @@
 					</div>
 					<!--Przyciski, które nie podsumowują formularza to te, które posiadają ustawiony atrybut type="button"-->
 					<!--Koniec części 6-->
+
+					<input type="reset" value="Wyczyść formularz">
+					<input type="hidden" name="token" value="adf4s32fu63hdbue73fb734vf"> <!--ten imput służy do tego, żeby przesyłać różne info do PHP, np. token, albo datę-->
 				</div>
 
 		
@@ -140,3 +226,6 @@
 
 </body>
 </html>
+
+<!--Pola same z siebie nie powstrzymują submita! Pusta pola można przesłać (bez required)-->
+<!--Za dużo js to niezdrowo - bo to opóźnia renderowanie strony po stronie klienta-->
