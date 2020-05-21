@@ -32,25 +32,106 @@
 	
 		<article>
 		
+		<div class="row">
 			<fieldset>
 				<legend>Rodzaj nadwozia</legend>
-				<form action=""method="post" enctype="application/x-www-form-urlencoded"> <!--atrybut action - który skrypt zajmuje się przetworzeniem danych z formularza. Śieżka do skryptu php. Enctype spsoób kodowania danych. application/x-www...-wartość domyślna-->
+		<form action="order.php"method="post" enctype="application/x-www-form-urlencoded"> <!--atrybut action - który skrypt zajmuje się przetworzeniem danych z formularza. Śieżka do skryptu php. Enctype spsoób kodowania danych. application/x-www...-wartość domyślna-->
 					<div><label><input type="radio" name="nadwozie" value="Hatchback"> Hatchback</label></div>	<!--W formularzach każda kontrolka formularza powinna posiadać "gorącą" aktywującą element etykietę (ustanowioną tagiem label)-->
 					<div><label><input type="radio" name="nadwozie" value="Kabrio"> Kabriolet</label></div>	<!--<input> może być wewnątrz tagów <label>-->
 					<div><input type="radio" id="nadwozie" name="nadwozie" value="Kombi" checked> <label for="nadwozie">Kombi</label></div> <!--albo trzeba nadać id dla inputa i przypisać je potem do opisu. Checked-ten trybut domyślnie odznacza pole - po odświeżeniu jest dalej zaznaczone -->
 			<!--<div> to element blokowy, a więc ustawia się jeden pod drugim. Jak wsadzimy w <div> inputy to ustawią się one jeden pod drugim-->
 			<!--atrybut name ustawiamy by uchywcić wartość danej kontrolki fromularza w PHP (name służy do odebrania wartości w PHP, odebrania po stronie serwra). Atrybut id jest po to, aby działały etykiety -->
 			<!--Atrybut "Value" jest konieczny, bo PHP nie pobiera z frontendu nazwy inputu - (np. "Hatchback, Kabrio, dlatego trzeba mu nadać identyfikator) -->
-		</form>
-		</fieldset>
+			</fieldset>
+		</div>
+			
 
-		<label for="silnik">Rodzaj silnika</label>
-		<select id="silnik" name="silnik">
-			<option value="w">wysokorężynowy</option>
-			<option value="b" selected>benzynowy</option> <!--Atrybut selected ustawia domyślnie wybór, który będzie widoczny np. po odświeżwniu strony-->
-			<option value="e">elektryczny</option>
-			<option value="h">hybrydowy</option>
-		</select>
+			<div class="row">
+				<label for="silnik">Rodzaj silnika</label>
+				<select id="silnik" name="silnik">
+					<option value="w">wysokorężynowy</option>
+					<option value="b" selected>benzynowy</option> <!--Atrybut selected ustawia domyślnie wybór, który będzie widoczny np. po odświeżwniu strony-->
+					<option value="e">elektryczny</option>
+					<option value="h">hybrydowy</option>
+				</select>
+			</div>
+
+			<div>
+				<fieldset>
+					<legend>Wyposażenie samochodu</legend>
+					<div class="col"> <!--dzielimy wszystkie itemy na 3 <divy>, żeby potem zrobić display inline-block i ustawić je w trzech rzędach!-->
+						<div> <label><input type="checkbox" name="wyp[]" value="1" disabled checked/> klimatyzacja</label></div> <!--atrybuty: checked - aby było domyślnie odznaczone, disabled aby nikt nie odznaczył-->
+						<div> <label><input type="checkbox" name="wyp[]" value="2" disabled checked/> sysytemy: ESP i ABS</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="3"/> tapicerka skórzana </label></div> <!--atrybut name jako tablica, która z pomocą skryptu będzie odczytywała wartości-->
+						<div> <label><input type="checkbox" name="wyp[]" value="4"/> tempomat</label></div>
+					</div>
+					
+					<div class="col">
+						<div> <label><input type="checkbox" name="wyp[]" value="5"/> klimatyzacja2</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="6"/> klimatyzacja3</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="7"/> klimatyzacja4</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="8"/> klimatyzacja5</label></div>
+					</div>
+					
+					<div class="col">
+						<div> <label><input type="checkbox" name="wyp[]" value="9"/> klimatyzacja6</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="10"/> klimatyzacja7</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="11"/> klimatyzacja8</label></div>
+						<div> <label><input type="checkbox" name="wyp[]" value="12"/> klimatyzacja9</label></div>
+					</div>
+					
+				</fieldset>
+
+					<div class="row">
+						<label for="choinki">Wybierz choinkę zapachową</label>
+
+						<div style="margin-top:10px;">
+							<select id="choinki" name="choinka" multiple size="2"> <!--atrybut multiple-aby wybrac kika opcji (z pomocą shitf lub ctrl) Atrybut size - aby pokazać ile opcji ma być widocznych od razu (reszta sie będzie przewijać)-->
+								<option value="k">kokosowa</option>
+								<option value="l" selected>leśna</option> <!--Atrybut selected ustawia domyślnie wybór, który będzie widoczny np. po odświeżwniu strony-->
+								<option value="o">owocowa</option>
+								<option value="m">miętowa</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<label>Imię <input type="text" name="imie"></label> <!--typ inputu text rózni się od textarea obszernoscią, w text jest tylko jedna linia w textarea można łamać linię poprzez enter-->
+						<label>Nazwisko <input type="text" name="nazwisko" placeholder="Podaj Nazwisko"></label> <!--place holder nie powinien zastępowac etykiety pola (label-nazwa+input)-->
+						<label>Hasło <input type="password" name="imie"></label> <!--TYP PASSWORD MASKUJE WPISYWANE ZNAKI-->
+						<label>Szukaj <input type="search" name="imie"></label> <!--typ search pozwala na kasowanie wpisywanych wartości-->
+					<!--we wszystkich tych pzypadkach atrybt name służy do odbierania zapytania przez PHP, przez serer-->
+					</div>
+
+					<div class="row">
+						<label>Ile kluczyków?</label>
+						<input type="number" name="kluczyk" step="1"/> <!--Ten input pozwala na wprowadzenie TYLKO liczb i przecinków i kropki oraz litery e (e2 oznacza przesuń przecinek o 2 miejsca w prawo - zapis naukoway)-->
+					<!--atrybut step - pozwala określić co ile wartości jakie liczby będą przesyłane. Wartość 1 -tylko o 1 (1,2,3,4), wartość 0.1 o jedną dziesiętną (1.1,4.1,4.2, itp.) Domyślnie jest ustawone 1 i nie przepuści np. 4.5-->
+					</div>
+
+					<div class="row">
+						<input type="submit" value="Zamawiam!"> <!--input typu submit podsumowuje i wysyła wszystko co było w formularzu-->
+					</div>
+
+					<div class="row">
+						<input type="button" value="Akceptuję!"> <!--input typu button nie wysyła tego co było w formularzu!-->
+					</div>
+					<!--waliduje poprawność inputu "number" po stronie klienta, sprawdzając jaki jest parametr step. Jeśli domyślnie jest 1 to nie przepuści np. 4.5-->
+					
+					<div class="row">
+						<button>Kończę!</button> <!--przycisk zbudowany z tagu otwierającego i zamykającego <button> także podsumuje cały formularz!-->
+												<!--jest to zrobione dlatego żeby była możliwość wsadzenia w tag <button> na przykład zdjęcia, żeby było atrakcyjnie-->
+					</div>
+
+					<div class="row">
+						<button type="button">Naprawdę kończę!</button> <!--ustawienie atrybutu type na wartość button powoduje że tag button i=nie wyśle formularza (tak jak powyżej) -->
+					</div>
+					<!--Przyciski, które nie podsumowują formularza to te, które posiadają ustawiony atrybut type="button"-->
+
+				</div>
+
+		
+	</form>
 			
 			
 		</article>
