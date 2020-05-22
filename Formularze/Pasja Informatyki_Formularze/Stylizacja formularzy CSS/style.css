@@ -1,0 +1,18 @@
+body
+{
+    background-image: url("img/hexellence.png");
+    font-size: 20px;
+}
+
+#container
+{
+    background-color: white;
+    width: 300px; /* wysokości nie trzeba ustawiać - automatycznie dostosowuje się do tego co jest w środku <diva> - w tym wypadku wysokość diva = wusokość formularza*/
+    padding: 50px;
+    margin-left: auto; /*margin left auto i toght auto --> ROBIĄ NAM AUTOMATYCZNE WYŚRODKOWANIE!*/
+    margin-right: auto;
+    margin-top: 100px;
+    -webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9); /*webkit - silnik do renderowania stron w firefox i chromie, na wszelki wypadek podajemy do kodu, żeby się robiło na iincyh*/ 
+    -moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);    /*maz-box --> dla mozzili, żeby złapało właściwości, prewencyjnie*/
+    box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9); /* właściwy box-shadow czyli cień, mogłoby byc tylko to, ale dwie poprzednie linie dodane z=na wszelkiw yapdek. Wszystko wygenrowane w https://www.cssmatic.com/box-shadow*/
+}
