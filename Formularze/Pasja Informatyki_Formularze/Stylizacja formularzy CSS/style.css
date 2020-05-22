@@ -29,6 +29,7 @@ input[type=password]
     padding: 10px;
     box-sizing: border-box; /*dwa sposoby naliczania paddingu. contet-box-->do maksymalnej szerokości pól doliczamy dołożony (np. 10px) padding. border-box--> przycisk (a nie input) używa innego sposobu liczenia rozmiaru! (CSS kurs nr, 4 -15 minuta)/ Border box-> przeglądarka pilnuje aby element mmiał taką samą szerokość, a padding odejmuje od szerokości  */
     outline: none; /*to jest obwódka dla aktywnego pola, ustawiona domyślnie, teraz wyłączona*/
+    margin-top: 10px;;
 }
 
 input[type=text]:focus, /*focus to podbne do hover, tylko hover znaczy jedynie najechanie kursorem, a focus oznacza wszystkei aktywności oznaczające aktyność pola (można np. uzyć tab do przejscia do pola)*/
@@ -55,6 +56,7 @@ input[type=submit]
     cursor: pointer;
     letter-spacing: 2px;
     outline:none;
+    margin-top: 25px;;
 }
 
 input[type=submit]:focus
@@ -64,7 +66,51 @@ input[type=submit]:focus
     box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
 }
 
+/*stylizacja placeholdera dla różnych wersji przeglądarek po skupieniu na inpucie*/
 input[type=submit]:hover
 {
     background-color: #37b93d;
 }
+
+nput[type=submit]:hover
+{
+	background-color: #37b93d;
+}
+
+input::-webkit-input-placeholder
+{
+    color: #999;
+}
+input:focus::-webkit-input-placeholder
+{
+    color: #428C42;
+}
+/* Firefox < 19 */
+input:-moz-placeholder
+{
+    color: #999;
+}
+input:focus:-moz-placeholder
+{
+    color: #428C42;
+}
+/* Firefox > 19 */
+input::-moz-placeholder
+{
+    color: #999;
+}
+input:focus::-moz-placeholder
+{
+    color: #428C42;
+}
+/* Internet Explorer 10 */
+input:-ms-input-placeholder
+{
+    color: #999;
+}
+input:focus:-ms-input-placeholder
+{
+    color: #428C42;
+}
+
+/* Jest jeszcze linia w html stylizujaca input, żeby zostawał placeholder (nie znikal po kliknięcu). Wykorzystano tam kod JavaScript.*/
